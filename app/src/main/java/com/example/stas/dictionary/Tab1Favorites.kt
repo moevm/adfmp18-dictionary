@@ -14,16 +14,17 @@ import kotlinx.android.synthetic.main.tab1favorites.*
 
 
 class Tab1Favorites: Fragment(){
+    private var favorites = arrayOf("Продукты", "Кухня", "Поездка")
+    private var adapter: ArrayAdapter<String> ?= null
+    private var listView: ListView ?= null
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View? = inflater?.inflate(R.layout.tab1favorites, container, false)
 
         //TODO вытягивать данные из БД
-        val favorites = arrayOf("Продукты", "Кухня", "Поездка")
-        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, favorites)
-        val listView: ListView = activity.favoritesListView
-        listView.adapter = adapter
-
-        
+        adapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, favorites)
+        listView = rootView?.findViewById<ListView>(R.id.favoritesListView)
+        listView?.adapter = adapter
 
         return rootView
     }
