@@ -78,9 +78,12 @@ class MainActivity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1)
+            when(position){
+                0 -> return Tab1Favorites()
+                1 -> return Tab2Recent()
+                2 -> return Tab3All()
+                else -> return Tab2Recent()
+            }
         }
 
         override fun getCount(): Int {
