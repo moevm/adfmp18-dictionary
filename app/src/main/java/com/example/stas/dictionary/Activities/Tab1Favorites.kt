@@ -1,4 +1,4 @@
-package com.example.stas.dictionary
+package com.example.stas.dictionary.Activities
 
 /**
  * Created by stas on 04.03.18.
@@ -10,9 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.tab1favorites.*
+import com.example.stas.dictionary.R
+import com.example.stas.dictionary.Data.WordsSet
 
 
 class Tab1Favorites: Fragment(){
@@ -24,7 +26,7 @@ class Tab1Favorites: Fragment(){
     private var wordsSet0 = WordsSet(favorites[0], words0)
     private var wordsSet1 = WordsSet(favorites[1], words1)
     private var wordsSet2 = WordsSet(favorites[2], words2)
-    private var adapter: ArrayAdapter<String> ?= null
+    private var adapter: ListAdapter ?= null
     private var listView: ListView ?= null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

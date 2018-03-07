@@ -1,4 +1,4 @@
-package com.example.stas.dictionary
+package com.example.stas.dictionary.Activities
 
 /**
  * Created by stas on 04.03.18.
@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.example.stas.dictionary.R
+import com.example.stas.dictionary.Data.WordsPerDay
 
 class Tab3All: Fragment(){
     private var Dates = arrayOf("14.12.96", "09.10.98", "04.01.16")

@@ -10,6 +10,9 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.example.stas.dictionary.Activities.Tab1Favorites
+import com.example.stas.dictionary.Activities.Tab2Recent
+import com.example.stas.dictionary.Activities.Tab3All
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

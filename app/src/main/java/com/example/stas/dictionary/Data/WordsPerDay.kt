@@ -1,4 +1,4 @@
-package com.example.stas.dictionary
+package com.example.stas.dictionary.Data
 
 /**
  * Created by stas on 06.03.18.
