@@ -21,7 +21,6 @@ class Tab3All: Fragment(){
     private var wordsPerDay3 = WordsPerDay(Dates[2], words2)
     private var wordsPerDay4 = WordsPerDay(Dates[2], words2)
     private var arrayOfAllWords = arrayOf(wordsPerDay0, wordsPerDay1, wordsPerDay2, wordsPerDay3, wordsPerDay4)
-    private var adapter: ArrayAdapter<String> ?= null
     private var linearLayout: LinearLayout ?= null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

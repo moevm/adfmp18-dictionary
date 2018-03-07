@@ -18,6 +18,12 @@ import kotlinx.android.synthetic.main.tab1favorites.*
 class Tab1Favorites: Fragment(){
     //TODO вытягивать данные из БД
     private var favorites = arrayOf("Продукты", "Кухня", "Поездка")
+    private var words0 = arrayOf("Cat - кошка", "House - дом", "Kitchen - кухня")
+    private var words1 = arrayOf("Dog - собака", "Car - машина", "Picture - картина")
+    private var words2 = arrayOf("Orange - апельсин", "Bed - кровать", "Door - дверь")
+    private var wordsSet0 = WordsSet(favorites[0], words0)
+    private var wordsSet1 = WordsSet(favorites[1], words1)
+    private var wordsSet2 = WordsSet(favorites[2], words2)
     private var adapter: ArrayAdapter<String> ?= null
     private var listView: ListView ?= null
 
