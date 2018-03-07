@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvWordsSetName"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:text="Set1"
+        android:textSize="15dp"
+        android:background="@color/colorPrimaryDark">
+    </TextView>
+
+    <ListView
+        android:id="@+id/lvWordsSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+
+</LinearLayout>
