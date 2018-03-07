@@ -15,20 +15,18 @@ class Tab3All: Fragment(){
     private var words0 = arrayOf("Cat - кошка", "House - дом", "Kitchen - кухня")
     private var words1 = arrayOf("Dog - собака", "Car - машина", "Picture - картина")
     private var words2 = arrayOf("Orange - апельсин", "Bed - кровать", "Door - дверь")
-    private var Map0 = HashMap<String, Array<String>>().put(Dates[0], words0)
-    private var Map1 = HashMap<String, Array<String>>().put(Dates[1], words1)
-    private var Map2 = HashMap<String, Array<String>>().put(Dates[2], words2)
     private var wordsPerDay0 = WordsPerDay(Dates[0], words0)
     private var wordsPerDay1 = WordsPerDay(Dates[1], words1)
     private var wordsPerDay2 = WordsPerDay(Dates[2], words2)
-    private var arrayOfAllWords = arrayOf(wordsPerDay0, wordsPerDay1, wordsPerDay2)
+    private var wordsPerDay3 = WordsPerDay(Dates[2], words2)
+    private var wordsPerDay4 = WordsPerDay(Dates[2], words2)
+    private var arrayOfAllWords = arrayOf(wordsPerDay0, wordsPerDay1, wordsPerDay2, wordsPerDay3, wordsPerDay4)
     private var adapter: ArrayAdapter<String> ?= null
     private var linearLayout: LinearLayout ?= null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View? = inflater?.inflate(R.layout.tab3all, container, false)
 
-        adapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, Dates)
         linearLayout = rootView?.findViewById(R.id.tab3mainLinLayout)
 
 
@@ -44,14 +42,8 @@ class Tab3All: Fragment(){
                 tvWord?.text = word
                 tab3_linLayout_words_per_day?.addView(item_tab3_linLayout_words_per_day)
             }
-
-
             linearLayout?.addView(item)
         }
-
-
-
-
 
         return rootView
     }

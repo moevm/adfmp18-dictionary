@@ -2,7 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="30dp"
     android:layout_marginTop="10dp">
     <TextView
         android:id="@+id/tvWord"
@@ -14,8 +14,8 @@
     </TextView>
     <ImageView
         android:id="@+id/tvEditImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_gravity="center_vertical|end"
         android:layout_marginEnd="5dp"
         android:src="@android:drawable/ic_menu_edit">
