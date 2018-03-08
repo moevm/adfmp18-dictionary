@@ -25,7 +25,7 @@ class WordsSet : Parcelable {
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeString(name)
-        dest.writeArray(words)
+        dest.writeStringArray(words)
     }
 
     companion object {
