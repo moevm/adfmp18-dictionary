@@ -42,7 +42,8 @@ class Tab1Favorites: Fragment(){
 
         listView?.setOnItemClickListener { parent, view, position, id ->
             var intent = Intent(context, WordsSetActivity::class.java)
-            intent.putExtra("test", 10)
+            intent.putExtra("test", wordsSet0)
+
             startActivity(intent)
         }
 
