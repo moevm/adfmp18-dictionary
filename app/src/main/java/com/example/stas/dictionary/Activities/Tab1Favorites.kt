@@ -6,6 +6,7 @@ package com.example.stas.dictionary.Activities
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,7 @@ class Tab1Favorites: Fragment(){
     private var wordsSet2 = WordsSet(favorites[2], words2)
     private var adapter: ListAdapter ?= null
     private var listView: ListView ?= null
-
+    private var fab: FloatingActionButton?= null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View? = inflater?.inflate(R.layout.tab1favorites, container, false)
 
@@ -51,6 +52,8 @@ class Tab1Favorites: Fragment(){
 
             startActivity(intent)
         }
+
+
 
         return rootView
     }
