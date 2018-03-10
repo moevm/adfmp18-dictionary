@@ -3,20 +3,18 @@ package com.example.stas.dictionary.Activities
 /**
  * Created by stas on 04.03.18.
  */
+import android.app.ActionBar
 import android.content.Intent
+import android.graphics.Point
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.view.ContextMenu
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ListAdapter
-import android.widget.ListView
-import android.widget.Toast
+import android.util.Log
+import android.widget.*
 import com.example.stas.dictionary.R
 import com.example.stas.dictionary.Data.WordsSet
+import android.graphics.drawable.ColorDrawable
+import android.view.*
 
 
 class Tab1Favorites: Fragment(){
@@ -53,8 +51,29 @@ class Tab1Favorites: Fragment(){
             startActivity(intent)
         }
 
+        fab = rootView?.findViewById(R.id.fab)
+        fab?.setOnClickListener({
+            val display : Display = activity.windowManager.defaultDisplay
+            val size = Point()
+            display.getRealSize(size)
+            val width = size.x
+            val height = size.y
 
+            val view = layoutInflater.inflate(R.layout.popup_set_layout, null)
 
+            val popupWindow = PopupWindow(view)
+
+//            popupWindow.width = LinearLayout.LayoutParams.MATCH_PARENT
+            popupWindow.width = (width * 0.85).toInt()
+            popupWindow.height = LinearLayout.LayoutParams.WRAP_CONTENT
+            popupWindow.isFocusable = true
+            // If you need the PopupWindow to dismiss when when touched outside
+            popupWindow.setBackgroundDrawable(ColorDrawable())
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+
+            popupWindow.showAsDropDown(view)
+
+        })
         return rootView
     }
 

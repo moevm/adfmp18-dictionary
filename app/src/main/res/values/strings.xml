@@ -6,4 +6,9 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="next">NEXT</string>
+    <string name="tvPopupNewSetTitle">New set</string>
+    <string name="tvPopupNewSetName">Set name</string>
+    <string name="etPopUpNewSet">New set</string>
+    <string name="btnPopUpOk">OK</string>
+    <string name="btnPopUpCancel">Cancel</string>
 </resources>
