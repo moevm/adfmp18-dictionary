@@ -10,5 +10,5 @@
     <string name="tvPopupNewSetName">Set name</string>
     <string name="etPopUpNewSet">New set</string>
     <string name="btnPopUpOk">OK</string>
-    <string name="btnPopUpCancel">Cancel</string>
+    <string name="btnNewSetCreate">Create</string>
 </resources>
