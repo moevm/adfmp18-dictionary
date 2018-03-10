@@ -15,6 +15,8 @@ import com.example.stas.dictionary.R
 import com.example.stas.dictionary.Data.WordsSet
 import android.graphics.drawable.ColorDrawable
 import android.view.*
+import kotlinx.android.synthetic.main.popup_set_layout.*
+import org.w3c.dom.Text
 
 
 class Tab1Favorites: Fragment(){
@@ -57,7 +59,6 @@ class Tab1Favorites: Fragment(){
             val size = Point()
             display.getRealSize(size)
             val width = size.x
-            val height = size.y
 
             val view = layoutInflater.inflate(R.layout.popup_set_layout, null)
 
@@ -73,6 +74,15 @@ class Tab1Favorites: Fragment(){
 
             popupWindow.showAsDropDown(view)
 
+            val etPopUpNewSet = view.findViewById<TextView>(R.id.etPopUpNewSet)
+            val btnPopUpOk = view.findViewById<Button>(R.id.btnPopUpOk)
+
+            btnPopUpOk?.setOnClickListener({
+                Log.i("MyLog", "Button ok pressed!")
+                var intent = Intent(context, NewWordsSetActivity::class.java)
+                intent.putExtra("newWordsSetName", etPopUpNewSet.text.toString())
+                startActivity(intent)
+            })
         })
         return rootView
     }

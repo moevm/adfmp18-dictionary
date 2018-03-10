@@ -38,37 +38,16 @@
             android:inputType="textPersonName"
             />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnPopUpOk"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <Button
-                android:id="@+id/btnPopUpCancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/btnPopUpCancel"
-                android:textSize="13sp"
-                android:textColor="@color/colorRecent"
-                android:background="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:layout_marginStart="90dp"
-                android:layout_marginRight="20dp"
-                />
-            <Button
-                android:id="@+id/btnPopUpOk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/btnPopUpOk"
-                android:background="@color/colorRecent"
-                android:gravity="center"
-                android:layout_marginLeft="20dp"
-                android:textSize="13sp"
-                />
-        </LinearLayout>
+            android:text="@string/btnPopUpOk"
+            android:background="@color/colorRecent"
+            android:gravity="center"
+            android:layout_gravity="right"
+            android:textSize="13sp"
+            />
 
     </LinearLayout>
 
