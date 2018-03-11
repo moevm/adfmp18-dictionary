@@ -12,7 +12,7 @@ import com.example.stas.dictionary.R
 
 class Tab2Training : Fragment(){
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView: View? = inflater?.inflate(R.layout.tab2recent, container, false)
+        var rootView: View? = inflater?.inflate(R.layout.tab2training, container, false)
         return rootView
     }
 }

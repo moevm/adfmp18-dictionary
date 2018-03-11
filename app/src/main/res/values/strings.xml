@@ -15,4 +15,5 @@
     <string name="tvDoYouKnow">Do you know the meaning off?</string>
     <string name="btnYes">Yes</string>
     <string name="btnNo">No</string>
+    <string name="btnTraining">Training</string>
 </resources>
