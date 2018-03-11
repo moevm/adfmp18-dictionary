@@ -1,7 +1,6 @@
 package com.example.stas.dictionary
 
 import android.support.design.widget.TabLayout
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
    
 import android.support.v4.app.Fragment
@@ -11,7 +10,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.example.stas.dictionary.Activities.Tab1Favorites
-import com.example.stas.dictionary.Activities.Tab2Recent
+import com.example.stas.dictionary.Activities.Tab2Training
 import com.example.stas.dictionary.Activities.Tab3All
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -75,9 +74,9 @@ class MainActivity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             when(position){
                 0 -> return Tab1Favorites()
-                1 -> return Tab2Recent()
+                1 -> return Tab2Training()
                 2 -> return Tab3All()
-                else -> return Tab2Recent()
+                else -> return Tab2Training()
             }
         }
 

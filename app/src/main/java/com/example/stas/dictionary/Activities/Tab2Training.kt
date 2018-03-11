@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.stas.dictionary.R
 
-class Tab2Recent: Fragment(){
+class Tab2Training : Fragment(){
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View? = inflater?.inflate(R.layout.tab2recent, container, false)
         return rootView
