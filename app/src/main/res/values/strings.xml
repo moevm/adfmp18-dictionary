@@ -16,4 +16,5 @@
     <string name="btnYes">Yes</string>
     <string name="btnNo">No</string>
     <string name="btnTraining">Training</string>
+    <string name="tvPopUpTraining">Select multiple sets</string>
 </resources>
