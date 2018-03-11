@@ -82,6 +82,7 @@ class Tab1Favorites: Fragment(){
                 var intent = Intent(context, NewWordsSetActivity::class.java)
                 intent.putExtra("newWordsSetName", etPopUpNewSet.text.toString())
                 startActivity(intent)
+                popupWindow.dismiss()
             })
         })
         return rootView

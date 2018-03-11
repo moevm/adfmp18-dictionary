@@ -46,10 +46,12 @@ class NewWordsSetActivity : AppCompatActivity() {
                     listOfCheckedWords.add(allWords[key])
             }
             newWordsSet.words = listOfCheckedWords.toTypedArray()
-            
-            //TODO Create in bd newWordsSet
-        })
 
+            //TODO Create in bd newWordsSet
+
+            this.finish()
+        })
     }
+
 
 }
