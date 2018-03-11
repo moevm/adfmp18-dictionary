@@ -12,4 +12,7 @@
     <string name="btnPopUpOk">OK</string>
     <string name="btnNewSetCreate">Create</string>
     <string name="tvPopupEditWord">Edit</string>
+    <string name="tvDoYouKnow">Do you know the meaning off?</string>
+    <string name="btnYes">Yes</string>
+    <string name="btnNo">No</string>
 </resources>
