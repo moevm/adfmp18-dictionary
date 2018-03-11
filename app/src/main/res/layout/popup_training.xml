@@ -1,7 +1,7 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/lnzPopup"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center"
@@ -42,4 +42,4 @@
     </LinearLayout>
 
 
-</FrameLayout>
+</LinearLayout>

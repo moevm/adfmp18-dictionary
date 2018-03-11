@@ -3,20 +3,22 @@ package com.example.stas.dictionary.Activities
 /**
  * Created by stas on 04.03.18.
  */
+import android.app.Dialog
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
 import android.view.*
 import android.widget.*
 import com.example.stas.dictionary.Data.WordsSet
 import com.example.stas.dictionary.R
 import kotlinx.android.synthetic.main.activity_new_set.*
+import kotlinx.android.synthetic.main.popup_training.*
 
 class Tab2Training : Fragment(){
 
-    private var allSets = arrayOf("set1", "set2", "set3",
-            "set2", "set3", "set2", "set3","set2", "set3","set2", "set3")
+    private var allSets = arrayOf("set1", "set2", "set3")
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View? = inflater?.inflate(R.layout.tab2training, container, false)
@@ -30,6 +32,7 @@ class Tab2Training : Fragment(){
             val width = size.x
 
             val view = layoutInflater.inflate(R.layout.popup_training, null)
+
             val popupWindow = PopupWindow(view)
 
             popupWindow.width = (width * 0.85).toInt()
@@ -44,11 +47,15 @@ class Tab2Training : Fragment(){
 
             listView?.choiceMode = ListView.CHOICE_MODE_MULTIPLE
             listView?.adapter = adapter
-            
+
+            var btnOk = view.findViewById<Button>(R.id.btnPopUpOk)
+
+            btnOk.setOnClickListener({
+                //TODO переход к тренировке
+                Toast.makeText(activity, "blabla", Toast.LENGTH_LONG).show()
+            })
+
             popupWindow.showAsDropDown(view)
-
-
-
 
         })
 
