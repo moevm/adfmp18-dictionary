@@ -94,6 +94,7 @@
     </FrameLayout>
 
     <Button
+        android:id="@+id/btnTraining"
         android:layout_width="344dp"
         android:layout_height="41dp"
         android:layout_gravity="center_horizontal|bottom"
