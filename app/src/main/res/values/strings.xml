@@ -11,4 +11,5 @@
     <string name="etPopUpNewSet">New set</string>
     <string name="btnPopUpOk">OK</string>
     <string name="btnNewSetCreate">Create</string>
+    <string name="tvPopupEditWord">Edit</string>
 </resources>

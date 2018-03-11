@@ -5,9 +5,9 @@ package com.example.stas.dictionary.Data
  */
 class WordsPerDay{
     var date: String
-    var words: Array<String>
+    var words: ArrayList<String>
 
-    constructor(date: String, words: Array<String>){
+    constructor(date: String, words: ArrayList<String>){
         this.date = date
         this.words = words
     }
