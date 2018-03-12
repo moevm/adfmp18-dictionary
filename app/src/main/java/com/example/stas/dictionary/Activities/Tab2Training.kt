@@ -4,6 +4,7 @@ package com.example.stas.dictionary.Activities
  * Created by stas on 04.03.18.
  */
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.support.v4.app.Fragment
@@ -19,12 +20,16 @@ import kotlinx.android.synthetic.main.popup_training.*
 class Tab2Training : Fragment(){
 
     private var allSets = arrayOf("set1", "set2", "set3")
-
+    private var allWords = ArrayList<String>(arrayListOf("Cat", "Dog", "House"))
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView: View? = inflater?.inflate(R.layout.tab2training, container, false)
-
-        var btnTraining = rootView?.findViewById<Button>(R.id.btnTraining)
-
+        val rootView: View? = inflater?.inflate(R.layout.tab2training, container, false)
+        val btnTraining = rootView?.findViewById<Button>(R.id.btnTraining)
+        val tvNext = rootView?.findViewById<TextView>(R.id.tvNext)
+        val tvWord = rootView?.findViewById<TextView>(R.id.tvWord)
+        val btnNo = rootView?.findViewById<Button>(R.id.btnNo)
+        val btnYes = rootView?.findViewById<Button>(R.id.btnYes)
+        var indx = 0
+        tvWord?.text = allWords.get(indx)
         btnTraining?.setOnClickListener({
             val display : Display = activity.windowManager.defaultDisplay
             val size = Point()
@@ -52,13 +57,28 @@ class Tab2Training : Fragment(){
 
             btnOk.setOnClickListener({
                 //TODO переход к тренировке
-                Toast.makeText(activity, "blabla", Toast.LENGTH_LONG).show()
+                var intent = Intent(context, Trainig::class.java)
+                //TODO putExtra
+                startActivity(intent)
+                popupWindow.dismiss()
             })
 
             popupWindow.showAsDropDown(view)
 
         })
 
+        tvNext?.setOnClickListener {
+            if(indx == 2)
+                indx = 0
+            tvWord?.text = allWords.get(++indx)
+        }
+
+        btnNo?.setOnClickListener({
+            Toast.makeText(activity, "Great!", Toast.LENGTH_SHORT).show()
+        })
+        btnYes?.setOnClickListener({
+            Toast.makeText(activity, "Sad!", Toast.LENGTH_SHORT).show()
+        })
         return rootView
     }
 

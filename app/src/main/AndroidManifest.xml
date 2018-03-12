@@ -19,8 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.WordsSetActivity"></activity>
-        <activity android:name=".Activities.NewWordsSetActivity"></activity>
+        <activity android:name=".Activities.WordsSetActivity" />
+        <activity android:name=".Activities.NewWordsSetActivity" />
+        <activity android:name=".Activities.Trainig"></activity>
     </application>
 
 </manifest>

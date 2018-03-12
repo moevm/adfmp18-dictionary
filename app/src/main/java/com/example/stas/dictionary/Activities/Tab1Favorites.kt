@@ -78,7 +78,6 @@ class Tab1Favorites: Fragment(){
             val btnPopUpOk = view.findViewById<Button>(R.id.btnPopUpOk)
 
             btnPopUpOk?.setOnClickListener({
-                Log.i("MyLog", "Button ok pressed!")
                 var intent = Intent(context, NewWordsSetActivity::class.java)
                 intent.putExtra("newWordsSetName", etPopUpNewSet.text.toString())
                 startActivity(intent)

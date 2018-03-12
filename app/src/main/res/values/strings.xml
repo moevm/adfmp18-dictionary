@@ -5,7 +5,7 @@
     <string name="tab_text_3_all">ALL</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="next">NEXT</string>
+    <string name="tvNext">NEXT</string>
     <string name="tvPopupNewSetTitle">New set</string>
     <string name="tvPopupNewSetName">Set name</string>
     <string name="etPopUpNewSet">New set</string>
@@ -17,4 +17,6 @@
     <string name="btnNo">No</string>
     <string name="btnTraining">Training</string>
     <string name="tvPopUpTraining">Select multiple sets</string>
+    <string name="tvChoose">Choose the correct answer</string>
+    <string name="btnStop">Stop</string>
 </resources>
