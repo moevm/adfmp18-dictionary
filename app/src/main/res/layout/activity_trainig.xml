@@ -8,8 +8,13 @@
     tools:context="com.example.stas.dictionary.MainActivity">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 
@@ -42,6 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="344dp"
         android:layout_height="228dp"
         android:layout_marginBottom="8dp"
@@ -50,8 +56,8 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/background_with_shadow_white_background"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -85,6 +91,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="345dp"
         android:layout_height="168dp"
         android:layout_marginBottom="4dp"
@@ -108,21 +115,20 @@
                 android:id="@+id/btnAnswer1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Answer 1"
                 android:layout_gravity="center"
                 android:layout_marginRight="15dp"
+                android:layout_weight="1"
                 android:background="@drawable/background_with_shadow_white_background"
-                />
+                android:text="Answer 1" />
 
             <Button
                 android:id="@+id/btnAnswer2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:text="Answer 2"
-                android:background="@drawable/background_with_shadow_white_background"/>
+                android:layout_weight="1"
+                android:background="@drawable/background_with_shadow_white_background"
+                android:text="Answer 2" />
         </LinearLayout>
 
         <LinearLayout
@@ -134,21 +140,30 @@
                 android:id="@+id/btnAnswer3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:layout_marginRight="15dp"
-                android:text="Answer 3"
-                android:background="@drawable/background_with_shadow_white_background"/>
+                android:layout_weight="1"
+                android:background="@drawable/background_with_shadow_white_background"
+                android:text="Answer 3" />
 
             <Button
                 android:id="@+id/btnAnswer4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:text="Answer 4"
-                android:background="@drawable/background_with_shadow_white_background"/>
+                android:layout_weight="1"
+                android:background="@drawable/background_with_shadow_white_background"
+                android:text="Answer 4" />
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewProcess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
 
 </android.support.constraint.ConstraintLayout>
