@@ -20,4 +20,6 @@
     <string name="tvChoose">Choose the correct answer</string>
     <string name="btnStop">Stop</string>
     <string name="process_text_action_name">TestActivity</string>
+    <string name="interestFact0">Did you know, that The Komodo dragon, found in Indonesia, is the largest lizard in the world, growing up to 3 meters (9.8 feet) in length.</string>
+    <string name="interestingFactName">Did you know?</string>
 </resources>

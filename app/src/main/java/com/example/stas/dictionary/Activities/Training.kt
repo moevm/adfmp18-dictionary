@@ -1,7 +1,7 @@
 package com.example.stas.dictionary.Activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.example.stas.dictionary.R
 import kotlinx.android.synthetic.main.activity_trainig.*
@@ -37,6 +37,5 @@ class Training : AppCompatActivity() {
         btnStop?.setOnClickListener({
             finish()
         })
-
     }
 }

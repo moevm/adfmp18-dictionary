@@ -13,6 +13,7 @@ import com.example.stas.dictionary.Activities.Tab1Favorites
 import com.example.stas.dictionary.Activities.Tab2Training
 import com.example.stas.dictionary.Activities.Tab3All
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.tab2training.*
 
 class MainActivity : AppCompatActivity() {
 

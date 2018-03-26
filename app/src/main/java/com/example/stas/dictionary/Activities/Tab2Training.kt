@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.*
 import com.example.stas.dictionary.R
+import kotlinx.android.synthetic.main.tab2training.*
 
 class Tab2Training : Fragment(){
 
@@ -24,6 +25,12 @@ class Tab2Training : Fragment(){
         val btnNo = rootView?.findViewById<Button>(R.id.btnNo)
         val btnYes = rootView?.findViewById<Button>(R.id.btnYes)
         var indx = 0
+
+//        val interestingFactName = rootView?.findViewById<TextView>(R.id.textViewInterestFactName)
+        val textInter = rootView?.findViewById<TextView>(R.id.textViewInterestFact)
+        textInter?.text = getString(R.string.interestFact0)
+//        interestingFactName?.text = getString(R.string.interestingFactName)
+
         tvWord?.text = allWords.get(indx)
         btnTraining?.setOnClickListener({
             val display : Display = activity.windowManager.defaultDisplay

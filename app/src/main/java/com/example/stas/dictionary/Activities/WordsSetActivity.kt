@@ -1,26 +1,26 @@
 package com.example.stas.dictionary.Activities
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.ListView
+import android.widget.SimpleAdapter
 import com.example.stas.dictionary.Data.WordsSet
 import com.example.stas.dictionary.R
 import kotlinx.android.synthetic.main.activity_words_set.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class WordsSetActivity : AppCompatActivity() {
 
-    private var listView: ListView?= null
+    private var listView: ListView? = null
     private var ATTRIBUTE_WORD_TEXT = "text"
-    private var simpleAdapter: MySimpleAdapter ?= null
+    private var simpleAdapter: MySimpleAdapter? = null
     private var from = arrayOf(ATTRIBUTE_WORD_TEXT)
-    private var to = IntArray(1, {R.id.tvWordSetItem})
-    private var wordsSet : WordsSet = WordsSet("defalt", arrayOf("default word - default translate"))
-    private var data : ArrayList<Map<String, Any>> = ArrayList<Map<String, Any>>(0)
+    private var to = IntArray(1, { R.id.tvWordSetItem })
+    private var wordsSet: WordsSet = WordsSet("defalt", arrayOf("default word - default translate"))
+    private var data: ArrayList<Map<String, Any>> = ArrayList<Map<String, Any>>(0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ class WordsSetActivity : AppCompatActivity() {
 
     }
 
-    inner class MySimpleAdapter: SimpleAdapter{
+    inner class MySimpleAdapter : SimpleAdapter {
         constructor(context: Context?, data: List<out Map<String, *>>?,
                     resource: Int, from: Array<out String>?, to: IntArray?) : super(context, data, resource, from, to)
 
@@ -52,7 +52,7 @@ class WordsSetActivity : AppCompatActivity() {
             var view = super.getView(position, convertView, parent)
             var imageView = view.findViewById<ImageView>(R.id.tvWordSetItemDelete)
             imageView.setTag(position)
-            imageView.setOnClickListener{
+            imageView.setOnClickListener {
                 data.removeAt(position)
                 notifyDataSetChanged()
             }

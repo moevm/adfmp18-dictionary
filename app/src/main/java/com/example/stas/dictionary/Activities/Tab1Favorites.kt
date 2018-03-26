@@ -3,23 +3,19 @@ package com.example.stas.dictionary.Activities
 /**
  * Created by stas on 04.03.18.
  */
-import android.app.ActionBar
 import android.content.Intent
 import android.graphics.Point
-import android.support.v4.app.Fragment
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.util.Log
-import android.widget.*
-import com.example.stas.dictionary.R
-import com.example.stas.dictionary.Data.WordsSet
-import android.graphics.drawable.ColorDrawable
+import android.support.v4.app.Fragment
 import android.view.*
-import kotlinx.android.synthetic.main.popup_set_layout.*
-import org.w3c.dom.Text
+import android.widget.*
+import com.example.stas.dictionary.Data.WordsSet
+import com.example.stas.dictionary.R
 
 
-class Tab1Favorites: Fragment(){
+class Tab1Favorites : Fragment() {
     //TODO вытягивать данные из БД
     private var favorites = arrayOf("Продукты", "Кухня", "Поездка")
     private var words0 = arrayOf("Cat - кошка", "House - дом", "Kitchen - кухня")
@@ -28,9 +24,9 @@ class Tab1Favorites: Fragment(){
     private var wordsSet0 = WordsSet(favorites[0], words0)
     private var wordsSet1 = WordsSet(favorites[1], words1)
     private var wordsSet2 = WordsSet(favorites[2], words2)
-    private var adapter: ListAdapter ?= null
-    private var listView: ListView ?= null
-    private var fab: FloatingActionButton?= null
+    private var adapter: ListAdapter? = null
+    private var listView: ListView? = null
+    private var fab: FloatingActionButton? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View? = inflater?.inflate(R.layout.tab1favorites, container, false)
 
@@ -43,7 +39,7 @@ class Tab1Favorites: Fragment(){
 
         listView?.setOnItemClickListener { parent, view, position, id ->
             var intent = Intent(context, WordsSetActivity::class.java)
-            when(position){
+            when (position) {
                 0 -> intent.putExtra("test", wordsSet0)
                 1 -> intent.putExtra("test", wordsSet1)
                 2 -> intent.putExtra("test", wordsSet2)
@@ -55,7 +51,7 @@ class Tab1Favorites: Fragment(){
 
         fab = rootView?.findViewById(R.id.fab)
         fab?.setOnClickListener({
-            val display : Display = activity.windowManager.defaultDisplay
+            val display: Display = activity.windowManager.defaultDisplay
             val size = Point()
             display.getRealSize(size)
             val width = size.x

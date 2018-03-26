@@ -8,6 +8,7 @@
     tools:context="com.example.stas.dictionary.MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="354dp"
         android:layout_height="314dp"
         android:layout_marginBottom="8dp"
@@ -16,8 +17,8 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/background_with_shadow_white_background"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -92,8 +93,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/frameLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="398dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewInterestFact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 
@@ -102,7 +109,7 @@
         android:layout_width="344dp"
         android:layout_height="41dp"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@color/colorPrimary"
@@ -112,5 +119,21 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewInterestFact"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="71dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginStart="14dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
 
 </android.support.constraint.ConstraintLayout>
