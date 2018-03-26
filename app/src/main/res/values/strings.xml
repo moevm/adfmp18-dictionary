@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Dictionary</string>
+    <string name="tab_text_1_favorites">FAVORITES</string>
+    <string name="tab_text_2_recent">TRAINING</string>
+    <string name="tab_text_3_all">ALL</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tvNext">NEXT</string>
+    <string name="tvPopupNewSetTitle">New set</string>
+    <string name="tvPopupNewSetName">Set name</string>
+    <string name="etPopUpNewSet">New set</string>
+    <string name="btnPopUpOk">OK</string>
+    <string name="btnNewSetCreate">Create</string>
+    <string name="tvPopupEditWord">Edit</string>
+    <string name="tvDoYouKnow">Do you know the meaning off?</string>
+    <string name="btnYes">Yes</string>
+    <string name="btnNo">No</string>
+    <string name="btnTraining">Training</string>
+    <string name="tvPopUpTraining">Select multiple sets</string>
+    <string name="tvChoose">Choose the correct answer</string>
+    <string name="btnStop">Stop</string>
+</resources>

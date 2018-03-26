@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:layout_marginTop="10dp">
+    <TextView
+        android:id="@+id/tvWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tvWord"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="15dp">
+    </TextView>
+    <ImageView
+        android:id="@+id/tvDeleteImage"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginEnd="50dp"
+        android:src="@android:drawable/ic_delete">
+    </ImageView>
+    <ImageView
+        android:id="@+id/tvEditImage"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginEnd="15dp"
+        android:src="@android:drawable/ic_menu_edit">
+    </ImageView>
+</FrameLayout>
