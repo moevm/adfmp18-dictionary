@@ -6,7 +6,7 @@ import android.widget.Toast
 import com.example.stas.dictionary.R
 import kotlinx.android.synthetic.main.activity_trainig.*
 
-class Trainig : AppCompatActivity() {
+class Training : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
