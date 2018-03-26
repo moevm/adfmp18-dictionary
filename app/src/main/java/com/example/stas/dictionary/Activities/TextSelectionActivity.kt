@@ -8,6 +8,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.stas.dictionary.R
 import kotlinx.android.synthetic.main.activity_text_selection.*
+import kotlinx.android.synthetic.main.tab2training.*
 
 
 class TextSelectionActivity : AppCompatActivity() {
@@ -15,10 +16,12 @@ class TextSelectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_selection)
         progressBar.visibility = ProgressBar.INVISIBLE
-        val text = intent
+        var text = intent
                 .getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)
         // process the text
         // here we have highlighted text
+        if (text == null)
+            text = ""
         inputText1.setText(text.toString())
         textView2.text = text
         var clickCtr = 0

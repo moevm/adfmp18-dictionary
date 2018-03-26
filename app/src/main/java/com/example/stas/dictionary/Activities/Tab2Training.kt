@@ -75,12 +75,26 @@ class Tab2Training : Fragment(){
 
         btnNo?.setOnClickListener({
             Toast.makeText(activity, "Great!", Toast.LENGTH_SHORT).show()
+            if(indx == 2)
+                indx = 0
+            tvWord?.text = allWords.get(++indx)
+
         })
         btnYes?.setOnClickListener({
             Toast.makeText(activity, "Sad!", Toast.LENGTH_SHORT).show()
+            if(indx == 2)
+                indx = 0
+            tvWord?.text = allWords.get(++indx)
         })
         return rootView
     }
+
+//    fun showNextWord(index: Int, ourView: TextView): Void {
+//        if(index == 2) {
+//            index = 0
+//        }
+//        ourView?.text = allWords.get(++index)
+//    }
 
 
 }

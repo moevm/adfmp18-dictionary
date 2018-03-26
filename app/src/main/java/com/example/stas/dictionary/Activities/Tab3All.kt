@@ -6,15 +6,16 @@ package com.example.stas.dictionary.Activities
 import android.content.Intent
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
-import android.support.v4.app.Fragment
 import android.os.Bundle
-import android.util.Log
+import android.support.design.widget.FloatingActionButton
+import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.*
-import com.example.stas.dictionary.R
 import com.example.stas.dictionary.Data.WordsPerDay
+import com.example.stas.dictionary.R
 
-class Tab3All: Fragment(){
+
+class Tab3All : Fragment() {
     private var Dates = arrayOf("14.12.96", "09.10.98", "04.01.16")
     private var words0 = ArrayList<String>(arrayListOf("Cat - кошка", "House - дом", "Kitchen - кухня"))
     private var words1 = ArrayList<String>(arrayListOf("Dog - собака", "Car - машина", "Picture - картина"))
@@ -25,7 +26,9 @@ class Tab3All: Fragment(){
     private var wordsPerDay3 = WordsPerDay(Dates[2], words2)
     private var wordsPerDay4 = WordsPerDay(Dates[2], words2)
     private var arrayOfAllWords = arrayOf(wordsPerDay0, wordsPerDay1, wordsPerDay2, wordsPerDay3, wordsPerDay4)
-    private var linearLayout: LinearLayout ?= null
+    private var linearLayout: LinearLayout? = null
+    private var addWordButton: FloatingActionButton? = null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View? = inflater?.inflate(R.layout.tab3all, container, false)
@@ -33,13 +36,13 @@ class Tab3All: Fragment(){
         linearLayout = rootView?.findViewById(R.id.tab3mainLinLayout)
 
         //TODO use Adapter for connecting data and view
-        for(wordsPerDay in arrayOfAllWords){
+        for (wordsPerDay in arrayOfAllWords) {
             var item = inflater?.inflate(R.layout.tab3all_item_of_list, linearLayout, false)
             var tvDate = item?.findViewById<TextView>(R.id.tvDate)
             tvDate?.text = wordsPerDay.date
 
             var tab3_linLayout_words_per_day = item?.findViewById<LinearLayout>(R.id.tab3_linLayout_words_per_day)
-            for(word in wordsPerDay.words){
+            for (word in wordsPerDay.words) {
                 var item_tab3_linLayout_words_per_day = inflater?.inflate(R.layout.words_per_day,
                         tab3_linLayout_words_per_day, false)
                 var tvWord = item_tab3_linLayout_words_per_day?.findViewById<TextView>(R.id.tvWord)
@@ -49,7 +52,7 @@ class Tab3All: Fragment(){
                 var editImg = item_tab3_linLayout_words_per_day?.findViewById<ImageView>(R.id.tvEditImage)
 
                 editImg?.setOnClickListener({
-                    val display : Display = activity.windowManager.defaultDisplay
+                    val display: Display = activity.windowManager.defaultDisplay
                     val size = Point()
                     display.getRealSize(size)
                     val width = size.x
@@ -86,6 +89,12 @@ class Tab3All: Fragment(){
             }
             linearLayout?.addView(item)
         }
+
+        addWordButton = rootView?.findViewById(R.id.fabAddWord)
+        addWordButton?.setOnClickListener({
+            val intent = Intent(activity, TextSelectionActivity::class.java)
+            startActivity(intent)
+        })
 
         return rootView
     }
