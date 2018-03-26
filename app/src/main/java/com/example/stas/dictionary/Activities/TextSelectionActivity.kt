@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.example.stas.dictionary.MainActivity
 import com.example.stas.dictionary.R
 import kotlinx.android.synthetic.main.activity_text_selection.*
 import kotlinx.android.synthetic.main.tab2training.*
@@ -33,6 +34,10 @@ class TextSelectionActivity : AppCompatActivity() {
                 inputText1.setText("Succcess!")
                 clickCtr += 1
                 Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
+
+//                val intent = Intent(this@TextSelectionActivity,MainActivity.SectionsPagerAdapter(2)::class.java)
+//                intent.putExtra("words0", text)
+//                startActivity(intent)
                 this.finish()
             } else {
                 progressBar.visibility = ProgressBar.INVISIBLE

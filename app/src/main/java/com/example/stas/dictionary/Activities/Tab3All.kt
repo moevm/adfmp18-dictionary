@@ -17,7 +17,7 @@ import com.example.stas.dictionary.R
 
 class Tab3All : Fragment() {
     private var Dates = arrayOf("14.12.96", "09.10.98", "04.01.16")
-    private var words0 = ArrayList<String>(arrayListOf("Cat - кошка", "House - дом", "Kitchen - кухня"))
+    val words0 = ArrayList<String>(arrayListOf("Cat - кошка", "House - дом", "Kitchen - кухня"))
     private var words1 = ArrayList<String>(arrayListOf("Dog - собака", "Car - машина", "Picture - картина"))
     private var words2 = ArrayList<String>(arrayListOf("Orange - апельсин", "Bed - кровать", "Door - дверь"))
     private var wordsPerDay0 = WordsPerDay(Dates[0], words0)
