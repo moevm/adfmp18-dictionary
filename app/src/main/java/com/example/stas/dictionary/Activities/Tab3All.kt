@@ -92,7 +92,7 @@ class Tab3All : Fragment() {
 
         addWordButton = rootView?.findViewById(R.id.fabAddWord)
         addWordButton?.setOnClickListener({
-            val intent = Intent(activity, TextSelectionActivity::class.java)
+            val intent = Intent(activity, WordsAddActivity::class.java)
             startActivity(intent)
         })
 
