@@ -4,22 +4,17 @@ package com.example.stas.dictionary.Activities
  * Created by stas on 04.03.18.
  */
 import android.content.ContentValues
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
-import android.graphics.Point
-import android.graphics.drawable.ColorDrawable
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import com.example.stas.dictionary.Data.WordPair
 import com.example.stas.dictionary.MyDatabaseOpenHelper
 import com.example.stas.dictionary.R
-import kotlinx.android.synthetic.main.tab2training.*
+import com.example.stas.dictionary.database
 import org.jetbrains.anko.db.*
 
-class Tab2Training : Fragment(){
+class Tab2Training : Fragment() {
 
     private var allSets = arrayOf("set1", "set2", "set3")
     private var allWords = ArrayList<String>(arrayListOf("Cat", "Dog", "House"))
@@ -32,27 +27,27 @@ class Tab2Training : Fragment(){
         val btnYes = rootView?.findViewById<Button>(R.id.btnYes)
         var indx = 0
 
+        val database = context.database
+
 //        val interestingFactName = rootView?.findViewById<TextView>(R.id.textViewInterestFactName)
         val textInter = rootView?.findViewById<TextView>(R.id.textViewInterestFact)
         textInter?.text = getString(R.string.interestFact0)
 //        interestingFactName?.text = getString(R.string.interestingFactName)
 
-        tvWord?.text = allWords.get(indx)
+        tvWord?.text = allWords[indx]
         btnTraining?.setOnClickListener({
-            val database: MyDatabaseOpenHelper = MyDatabaseOpenHelper(this.context)
+
+
             database.use {
-                createTable("WordPairs", true,
-                        "id" to INTEGER + PRIMARY_KEY + UNIQUE,
-                        "word" to TEXT,
-                        "transl" to TEXT)
-
+                insert(WordPair.TABLE_NAME, WordPair.COLUMN_ID to 1,
+                        WordPair.COLUMN_WORD to "Apple", WordPair.COLUMN_TRANSLATE to "Яблоко",
+                        WordPair.COLUMN_DATE to "2018-04-04")
             }
-
-            val values = ContentValues()
-            values.put("id", 1)
-            values.put("word", "Apple")
-            values.put("transl", "Яблоко")
-            db.insert("WordPairs", null, values)
+            database.use {
+                insert(WordPair.TABLE_NAME, WordPair.COLUMN_ID to 1,
+                        WordPair.COLUMN_WORD to "Cat", WordPair.COLUMN_TRANSLATE to "Кот",
+                        WordPair.COLUMN_DATE to "2018-04-04")
+            }
 
 //            val display : Display = activity.windowManager.defaultDisplay
 //            val size = Point()
@@ -91,21 +86,29 @@ class Tab2Training : Fragment(){
         })
 
         tvNext?.setOnClickListener {
-            if(indx == 2)
+            if (indx == 2)
                 indx = 0
-            tvWord?.text = allWords.get(++indx)
+            tvWord?.text = allWords[++indx]
         }
 
         btnNo?.setOnClickListener({
-            Toast.makeText(activity, "Great!", Toast.LENGTH_SHORT).show()
-            if(indx == 2)
+
+            val text = database.use {
+                select(WordPair.TABLE_NAME).exec {
+                    parseList(classParser<WordPair>())
+                }
+            }
+
+            Toast.makeText(activity, text[0].word, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, "Great!", Toast.LENGTH_SHORT).show()
+            if (indx == 2)
                 indx = 0
-            tvWord?.text = allWords.get(++indx)
+            tvWord?.text = allWords[++indx]
 
         })
         btnYes?.setOnClickListener({
             Toast.makeText(activity, "Sad!", Toast.LENGTH_SHORT).show()
-            if(indx == 2)
+            if (indx == 2)
                 indx = 0
             tvWord?.text = allWords.get(++indx)
         })
