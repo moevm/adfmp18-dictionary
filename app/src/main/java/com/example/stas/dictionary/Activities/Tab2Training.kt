@@ -37,18 +37,6 @@ class Tab2Training : Fragment() {
         tvWord?.text = allWords[indx]
         btnTraining?.setOnClickListener({
 
-
-            database.use {
-                insert(WordPair.TABLE_NAME, WordPair.COLUMN_ID to 1,
-                        WordPair.COLUMN_WORD to "Apple", WordPair.COLUMN_TRANSLATE to "Яблоко",
-                        WordPair.COLUMN_DATE to "2018-04-04")
-            }
-            database.use {
-                insert(WordPair.TABLE_NAME, WordPair.COLUMN_ID to 1,
-                        WordPair.COLUMN_WORD to "Cat", WordPair.COLUMN_TRANSLATE to "Кот",
-                        WordPair.COLUMN_DATE to "2018-04-04")
-            }
-
 //            val display : Display = activity.windowManager.defaultDisplay
 //            val size = Point()
 //            display.getRealSize(size)
