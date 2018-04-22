@@ -9,6 +9,7 @@ import com.example.stas.dictionary.Data.WordPair
 import com.example.stas.dictionary.R
 import com.example.stas.dictionary.database
 import kotlinx.android.synthetic.main.activity_word_add.*
+import kotlinx.android.synthetic.main.tab3all_item_of_list.*
 import org.jetbrains.anko.db.insert
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -25,11 +26,10 @@ class WordsAddActivity : AppCompatActivity() {
 //                .getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)
         // process the text
         // here we have highlighted text
-//        if (text == null)
-//            text = ""
-//        inWord.setText(text.toString())
-//        inTransl.setText(text1.toString())
-//        textView2.text = text
+        if (text == null)
+            text = ""
+        inWord.setText(text.toString())
+
         var clickCtr = 0
         val formatter = DateTimeFormatter.ISO_DATE
         button.setOnClickListener {
@@ -45,6 +45,8 @@ class WordsAddActivity : AppCompatActivity() {
                             WordPair.COLUMN_TRANSLATE to inTransl.text.toString(),
                             WordPair.COLUMN_DATE to formatted.toString())
                 }
+
+
 //                val intent = Intent(this@WordsAddActivity,MainActivity.SectionsPagerAdapter(2)::class.java)
 //                intent.putExtra("words0", text)
 //                startActivity(intent)
