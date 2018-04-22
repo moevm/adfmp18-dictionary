@@ -3,6 +3,8 @@ package com.example.stas.dictionary.Activities
 /**
  * Created by stas on 04.03.18.
  */
+import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
@@ -12,10 +14,10 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.*
 import com.example.stas.dictionary.Data.WordPair
-import com.example.stas.dictionary.Data.WordsPerDay
+import com.example.stas.dictionary.MyDatabaseOpenHelper
 import com.example.stas.dictionary.R
-import com.example.stas.dictionary.database
 import org.jetbrains.anko.db.classParser
+import com.example.stas.dictionary.database
 import org.jetbrains.anko.db.parseList
 import org.jetbrains.anko.db.select
 
@@ -32,21 +34,26 @@ class Tab3All : Fragment() {
 //    private var wordsPerDay4 = WordsPerDay(Dates[2], words2)
     private var linearLayout: LinearLayout? = null
     private var addWordButton: FloatingActionButton? = null
+    private var arrayOfAllWords: List<WordPair> = ArrayList()
+
+
+    fun updateContent(database: MyDatabaseOpenHelper) {
+        arrayOfAllWords = database.use {
+            select(WordPair.TABLE_NAME).exec {
+                parseList(classParser())
+            }
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val database = context.database
+
         var rootView: View? = inflater?.inflate(R.layout.tab3all, container, false)
 
         linearLayout = rootView?.findViewById(R.id.tab3mainLinLayout)
 
-        val database = context.database
+        updateContent(database)
 
-        var arrayOfAllWords = database.use {
-            select(WordPair.TABLE_NAME).exec {
-                parseList(classParser<WordPair>())
-            }
-        }
-
-        //TODO use Adapter for connecting data and view
         for (word in arrayOfAllWords) {
             var item = inflater?.inflate(R.layout.tab3all_item_of_list, linearLayout, false)
             var tvDate = item?.findViewById<TextView>(R.id.tvDate)
@@ -86,7 +93,13 @@ class Tab3All : Fragment() {
                     etPopUpEditWord.text = word.word
 
                     btnPopUpOk?.setOnClickListener({
-                        //TODO добавить обработку изменения текста
+                        val values = ContentValues()
+                        values.put(WordPair.COLUMN_WORD, etPopUpEditWord.text.toString())
+                        val whereArgs = arrayOf(word.word)
+                        database.use {
+                            update(WordPair.TABLE_NAME, values, "${WordPair.COLUMN_WORD} = ?", whereArgs)
+                        }
+                        updateContent(database)
                         popupWindow.dismiss()
                     })
                 })
@@ -106,6 +119,7 @@ class Tab3All : Fragment() {
         addWordButton?.setOnClickListener({
             val intent = Intent(activity, WordsAddActivity::class.java)
             startActivity(intent)
+            updateContent(database)
         })
 
         return rootView
