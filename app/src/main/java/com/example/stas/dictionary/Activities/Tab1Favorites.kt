@@ -11,24 +11,66 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.*
-import com.example.stas.dictionary.Data.WordsSet
+import com.example.stas.dictionary.Data.*
+import com.example.stas.dictionary.MyDatabaseOpenHelper
 import com.example.stas.dictionary.R
+import com.example.stas.dictionary.database
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.parseList
+import org.jetbrains.anko.db.select
+import com.example.stas.dictionary.R.id.textView
+import android.widget.TextView
+import kotlinx.android.synthetic.main.tab1favorites.*
 
 
 class Tab1Favorites : Fragment() {
     //TODO вытягивать данные из БД
-    private var favorites = arrayOf("Продукты", "Кухня", "Поездка")
-    private var words0 = arrayOf("Cat - кошка", "House - дом", "Kitchen - кухня")
-    private var words1 = arrayOf("Dog - собака", "Car - машина", "Picture - картина")
-    private var words2 = arrayOf("Orange - апельсин", "Bed - кровать", "Door - дверь")
-    private var wordsSet0 = WordsSet(favorites[0], words0)
-    private var wordsSet1 = WordsSet(favorites[1], words1)
-    private var wordsSet2 = WordsSet(favorites[2], words2)
+//    private var favorites = arrayOf("Продукты", "Кухня", "Поездка")
+//    private var words0 = arrayOf("Cat - кошка", "House - дом", "Kitchen - кухня")
+//    private var words1 = arrayOf("Dog - собака", "Car - машина", "Picture - картина")
+//    private var words2 = arrayOf("Orange - апельсин", "Bed - кровать", "Door - дверь")
+//    private var wordsSet0 = WordsSet(favorites[0], words0)
+//    private var wordsSet1 = WordsSet(favorites[1], words1)
+//    private var wordsSet2 = WordsSet(favorites[2], words2)
     private var adapter: ListAdapter? = null
     private var listView: ListView? = null
     private var fab: FloatingActionButton? = null
+
+    fun updateContent(): List<WordList> {
+        val database = context.database
+        return database.use {
+            select(WordList.TABLE_NAME).exec {
+                parseList(classParser())
+            }
+        }
+    }
+
+    fun getWordsFromDb(name: String): List<WordPair> {
+        val database = context.database
+        return database.use {
+            rawQuery("SELECT ${WordPair.TABLE_NAME}.* from ${WordPair.TABLE_NAME}" +
+                    ", ${WordList.TABLE_NAME}, ${WordPairList.TABLE_NAME} where  " +
+                    "${WordList.TABLE_NAME}.${WordList.COLUMN_NAME} = '$name' and " +
+                    "${WordList.TABLE_NAME}.${WordList.COLUMN_ID} = " +
+                    "${WordPairList.TABLE_NAME}.${WordPairList.COLUMN_LIST_ID} and " +
+                    "${WordPair.TABLE_NAME}.${WordPair.COLUMN_ID} = " +
+                    "${WordPairList.TABLE_NAME}.${WordPairList.COLUMN_WORD_ID}", null)
+                    .parseList(classParser())
+            }
+    }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView: View? = inflater?.inflate(R.layout.tab1favorites, container, false)
+
+        var wordsSet = ArrayList<WordsSet>()
+        var favorites = ArrayList<String>()
+
+        updateContent().forEach({
+            favorites.add(it.name)
+           var words = getWordsFromDb(it.name)
+                   .map { wordPair ->  "${wordPair.word} - ${wordPair.translate}"}
+            wordsSet.add(WordsSet(it.name, words.toTypedArray()))
+        })
 
 
         adapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, favorites)
@@ -39,13 +81,13 @@ class Tab1Favorites : Fragment() {
 
         listView?.setOnItemClickListener { parent, view, position, id ->
             var intent = Intent(context, WordsSetActivity::class.java)
-            when (position) {
-                0 -> intent.putExtra("test", wordsSet0)
-                1 -> intent.putExtra("test", wordsSet1)
-                2 -> intent.putExtra("test", wordsSet2)
-            }
-
-
+            val itemValue = favoritesListView.getItemAtPosition(position) as String
+            val values = (view as TextView).text.toString()
+            wordsSet.forEach({
+                if (it.name == values) {
+                    intent.putExtra("test", it)
+                }
+            })
             startActivity(intent)
         }
 

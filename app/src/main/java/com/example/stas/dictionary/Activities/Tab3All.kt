@@ -23,15 +23,6 @@ import org.jetbrains.anko.db.select
 
 
 class Tab3All : Fragment() {
-    private var Dates = arrayOf("14.12.96", "09.10.98", "04.01.16")
-//    val words0 = ArrayList<String>(arrayListOf("Cat - кошка", "House - дом", "Kitchen - кухня"))
-//    private var words1 = ArrayList<String>(arrayListOf("Dog - собака", "Car - машина", "Picture - картина"))
-//    private var words2 = ArrayList<String>(arrayListOf("Orange - апельсин", "Bed - кровать", "Door - дверь"))
-//    private var wordsPerDay0 = WordsPerDay(Dates[0], words0)
-//    private var wordsPerDay1 = WordsPerDay(Dates[1], words1)
-//    private var wordsPerDay2 = WordsPerDay(Dates[2], words2)
-//    private var wordsPerDay3 = WordsPerDay(Dates[2], words2)
-//    private var wordsPerDay4 = WordsPerDay(Dates[2], words2)
     private var linearLayout: LinearLayout? = null
     private var addWordButton: FloatingActionButton? = null
     private var arrayOfAllWords: List<WordPair> = ArrayList()
@@ -106,10 +97,12 @@ class Tab3All : Fragment() {
 
                 var deleteImg = item_tab3_linLayout_words_per_day?.findViewById<ImageView>(R.id.tvDeleteImage)
                 deleteImg?.setOnClickListener({
-                    //TODO добавить связь с бд
+                    val whereArgs = arrayOf(word.word)
+                    database.use {
+                        delete(WordPair.TABLE_NAME, "${WordPair.COLUMN_WORD} = ?", whereArgs)
+                    }
                     Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
 //                    wordsPerDay.words.remove(word)
-                    //TODO Delete from db
                 })
 //            }
             linearLayout?.addView(item)

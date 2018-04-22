@@ -31,7 +31,7 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "MyDatab
                 WordList.COLUMN_ID to INTEGER + PRIMARY_KEY,
                 WordList.COLUMN_NAME to TEXT,
                 WordList.COLUMN_IS_FAVOURITE to INTEGER,
-                WordList.COLUMN_COUNT_WORDS to TEXT,
+                WordList.COLUMN_COUNT_WORDS to INTEGER,
                 WordList.COLUMN_DATE to TEXT)
         db.createTable(WordPairList.TABLE_NAME, true,
                 WordPairList.COLUMN_ID to INTEGER + PRIMARY_KEY,
