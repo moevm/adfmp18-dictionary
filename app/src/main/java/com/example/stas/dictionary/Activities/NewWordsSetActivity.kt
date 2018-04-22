@@ -55,7 +55,7 @@ class NewWordsSetActivity : AppCompatActivity() {
             rawQuery("SELECT ${WordList.TABLE_NAME}.* FROM ${WordList.TABLE_NAME} where ${WordList.COLUMN_NAME} = '$nameForNewSet'", null)
                     .parseSingle(classParser())
         }
-        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, allWords)
+        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, allWords.map { "${it.word} - ${it.translate}" })
 
         listView = lvNewWordsSet
         listView?.choiceMode = ListView.CHOICE_MODE_MULTIPLE
