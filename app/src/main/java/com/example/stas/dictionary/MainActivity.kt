@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
      * [android.support.v4.app.FragmentStatePagerAdapter].
      */
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
+    var tab1: Tab1Favorites = Tab1Favorites()
+    var tab2: Tab2Training = Tab2Training()
+    var tab3: Tab3All = Tab3All()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,11 +76,11 @@ class MainActivity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
-            when(position){
-                0 -> return Tab1Favorites()
-                1 -> return Tab2Training()
-                2 -> return Tab3All()
-                else -> return Tab2Training()
+            return when(position){
+                0 -> tab1
+                1 -> tab2
+                2 -> tab3
+                else -> tab2
             }
         }
 

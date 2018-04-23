@@ -3,6 +3,7 @@ package com.example.stas.dictionary.Activities
 /**
  * Created by stas on 04.03.18.
  */
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
@@ -10,14 +11,32 @@ import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import com.example.stas.dictionary.Data.WordList
+import com.example.stas.dictionary.Data.WordPair
+import com.example.stas.dictionary.MyDatabaseOpenHelper
 import com.example.stas.dictionary.R
-import kotlinx.android.synthetic.main.tab2training.*
+import com.example.stas.dictionary.database
+import org.jetbrains.anko.db.*
 
-class Tab2Training : Fragment(){
+class Tab2Training : Fragment() {
 
-    private var allSets = arrayOf("set1", "set2", "set3")
-    private var allWords = ArrayList<String>(arrayListOf("Cat", "Dog", "House"))
+    fun getAllWords(database : MyDatabaseOpenHelper): List<WordPair> {
+        return database.use {
+            select(WordPair.TABLE_NAME).exec {
+                parseList(classParser())
+            }
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val database = context.database
+
+        var allWordsPair = getAllWords(database)
+        var allSets : List<WordList> = database.use {
+            select(WordList.TABLE_NAME).exec {
+                parseList(classParser())
+            }
+        }
         val rootView: View? = inflater?.inflate(R.layout.tab2training, container, false)
         val btnTraining = rootView?.findViewById<Button>(R.id.btnTraining)
         val tvNext = rootView?.findViewById<TextView>(R.id.tvNext)
@@ -31,8 +50,10 @@ class Tab2Training : Fragment(){
         textInter?.text = getString(R.string.interestFact0)
 //        interestingFactName?.text = getString(R.string.interestingFactName)
 
-        tvWord?.text = allWords.get(indx)
+        var allWords = allWordsPair.map { it.word }
+        tvWord?.text = allWords[indx]
         btnTraining?.setOnClickListener({
+
             val display : Display = activity.windowManager.defaultDisplay
             val size = Point()
             display.getRealSize(size)
@@ -50,7 +71,7 @@ class Tab2Training : Fragment(){
             popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
 
             var listView = view.findViewById<ListView>(R.id.lvTraining)
-            var adapter = ArrayAdapter(context, android.R.layout.simple_list_item_multiple_choice, allSets)
+            var adapter = ArrayAdapter(context, android.R.layout.simple_list_item_multiple_choice, allSets.map { it.name })
 
             listView?.choiceMode = ListView.CHOICE_MODE_MULTIPLE
             listView?.adapter = adapter
@@ -70,23 +91,23 @@ class Tab2Training : Fragment(){
         })
 
         tvNext?.setOnClickListener {
-            if(indx == 2)
+            if (indx == allWords.size)
                 indx = 0
-            tvWord?.text = allWords.get(++indx)
+            tvWord?.text = allWords[indx++]
         }
 
         btnNo?.setOnClickListener({
-            Toast.makeText(activity, "Great!", Toast.LENGTH_SHORT).show()
-            if(indx == 2)
+            Toast.makeText(activity, "Sad!", Toast.LENGTH_SHORT).show()
+            if (indx == allWords.size)
                 indx = 0
-            tvWord?.text = allWords.get(++indx)
+            tvWord?.text = allWords[indx++]
 
         })
         btnYes?.setOnClickListener({
-            Toast.makeText(activity, "Sad!", Toast.LENGTH_SHORT).show()
-            if(indx == 2)
+            Toast.makeText(activity, "Great!", Toast.LENGTH_SHORT).show()
+            if (indx == allWords.size)
                 indx = 0
-            tvWord?.text = allWords.get(++indx)
+            tvWord?.text = allWords[indx++]
         })
         return rootView
     }
